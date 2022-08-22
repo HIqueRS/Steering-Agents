@@ -8,11 +8,11 @@ public class Seeking_Target : MonoBehaviour
     public Vector2 pos;
     public Vector2 acc;
     public Vector2 force;
-    Vector2 teste;
+    protected Vector2 teste;
     public float Max_Speed;
     public float Max_Force;
 
-    Vector2 teste2;
+    protected Vector2 teste2;
 
     public Camera cam;
     
@@ -37,27 +37,30 @@ public class Seeking_Target : MonoBehaviour
        
 
         teste2 = cam.ScreenToWorldPoint(Input.mousePosition);
-        Seek(teste2);
+        //Seek(teste2);
+
+        applyForce(Seek(teste2));
 
         GoingFoward();
     }
 
-    void Seek(Vector2 target)
+    protected Vector2 Seek(Vector2 target)
     {
         Vector2 nForce;
         nForce = target - (Vector2)transform.position;
-        //nForce = Vector2.ClampMagnitude(nForce, Max_Speed);
+        nForce = Vector2.ClampMagnitude(nForce, Max_Speed);
         nForce -= vel;
         nForce = Vector2.ClampMagnitude(nForce, Max_Force);
-        applyForce(nForce);
+        
+        return nForce;
     }
 
-    void applyForce(Vector2 nforce)
+    protected void applyForce(Vector2 nforce)
     {
         acc += nforce;
     }
 
-    void GoingFoward()
+    protected void GoingFoward()
     {
 
         vel += (acc);
