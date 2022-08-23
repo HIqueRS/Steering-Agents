@@ -42,6 +42,41 @@ public class Seeking_Target : MonoBehaviour
         applyForce(Seek(teste2));
 
         GoingFoward();
+
+        teleport();
+
+        Rotate();
+    }
+
+    public void teleport()
+    {
+        if(transform.position.x > 9.5)
+        {
+            transform.position = new Vector3(-9.4f, transform.position.y, 0);
+        }
+        else if (transform.position.x < -9.5)
+        {
+            transform.position = new Vector3(9.4f, transform.position.y, 0);
+        }
+
+        if (transform.position.y > 5.5)
+        {
+            transform.position = new Vector3(transform.position.x, -5.4f, 0);
+        }
+        else if (transform.position.y < -5.5)
+        {
+            transform.position = new Vector3(transform.position.x,5.5f, 0);
+        }
+    }
+
+    public void Rotate()
+    {
+        float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        //transform.LookAt((Vector2)transform.position + vel);
+
+       // transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, vel, 1 * Time.deltaTime, 0.0f));
     }
 
     protected Vector2 Seek(Vector2 target)

@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flee : Seeking_Target
+public class Evade : Pursuer
 {
-
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +13,9 @@ public class Flee : Seeking_Target
     // Update is called once per frame
     void Update()
     {
-        teste2 = cam.ScreenToWorldPoint(Input.mousePosition);
-        
+        target_pos = target.transform.position;
 
-        applyForce(Flee_Vector(teste2));
+        applyForce(Evade_Force(target_pos));
 
         GoingFoward();
 
@@ -28,8 +24,8 @@ public class Flee : Seeking_Target
         Rotate();
     }
 
-    Vector2 Flee_Vector(Vector2 vec)
+    Vector2 Evade_Force(Vector2 vec)
     {
-        return Seek(vec) * -1;
+        return Pursuit(vec) * -1;
     }
 }
