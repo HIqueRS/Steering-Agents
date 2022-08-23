@@ -83,9 +83,17 @@ public class Seeking_Target : MonoBehaviour
     {
         Vector2 nForce;
         nForce = target - (Vector2)transform.position;
-        nForce = Vector2.ClampMagnitude(nForce, Max_Speed);
+
+        //Debug.Log(nForce.magnitude);
+
+        nForce = nForce.normalized;
+        //nForce = Vector2.ClampMagnitude(nForce, Max_Speed);
+        nForce = nForce * Max_Speed;
         nForce -= vel;
-        nForce = Vector2.ClampMagnitude(nForce, Max_Force);
+        //nForce = Vector2.ClampMagnitude(nForce, Max_Force);
+
+        nForce = nForce.normalized;
+        nForce = nForce * Max_Force;
         
         return nForce;
     }
@@ -98,7 +106,7 @@ public class Seeking_Target : MonoBehaviour
     protected void GoingFoward()
     {
 
-        vel += (acc);
+        vel += (acc)/2 ;
 
         
 
