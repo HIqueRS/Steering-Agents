@@ -23,7 +23,11 @@ public class Arrive : Seeking_Target
 
         teleport();
 
-        Rotate();
+        if(vel.magnitude > 0.2f)
+        {
+            Rotate();
+        }
+       
     }
 
     Vector2 Arrive_Vec(Vector2 target)

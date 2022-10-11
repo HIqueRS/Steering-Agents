@@ -880,7 +880,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   acc: {x: 0.5, y: 0.5}
   force: {x: 0, y: 0}
-  Max_Speed: 10
+  Max_Speed: 4
   Max_Force: 0.25
   cam: {fileID: 519420031}
 --- !u!212 &1902916596

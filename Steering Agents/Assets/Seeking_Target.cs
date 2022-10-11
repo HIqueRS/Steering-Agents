@@ -108,11 +108,14 @@ public class Seeking_Target : MonoBehaviour
 
         vel += (acc)/2 ;
 
-        
+
 
         vel = Vector2.ClampMagnitude(vel, Max_Speed);
+        //vel = vel.normalized;
 
-      
+        //vel = vel * Max_Speed;
+
+
 
         transform.position += new Vector3(vel.x, vel.y, 0) * Time.deltaTime;
 
